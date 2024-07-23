@@ -1,20 +1,30 @@
-fn get_version() -> u16 {
-    1000
+use std::fmt::format;
+
+fn parse_markdown_file() {}
+
+fn get_title() -> String {
+    let name = env!("CARGO_PKG_NAME");
+    let version = env!("CARGO_PKG_VERSION");
+    let description = env!("CARGO_PKG_DESCRIPTION");
+    format!("{}, (v{}), {}", name, version, description)
 }
 
-fn usage() {
-    // Long way
-    // let version: u16;
-    // version = get_version();
-    // println("Version {}", version)
-
-    // Short way
-    let version: u16 = get_version();
-
-    println!("Tinymd, a markdown compiler written in Rust by Geovane Saraiva da Silva");
-    println!("Version {version}");
+fn print_short_banner() {
+    println!("{}", get_title());
 }
+
+fn print_long_banner() {
+    let owner = format!("Written by: {}", env!("CARGO_PKG_AUTHORS"));
+    let homepage = format!("Homepage: {}", env!("CARGO_PKG_HOMEPAGE"));
+    let usage = format!("Usage: {} <somefile>.md",env!("CARGO_BIN_NAME"));
+    
+    print_short_banner();
+    println!("{}\n{}\n{}", owner, homepage, usage)
+}
+
+fn usage() {}
 
 fn main() {
-    usage()
+    print_long_banner();
+    usage();
 }

@@ -1,6 +1,8 @@
 [package]
 name = "rust-markdown-compiler"
 authors = ["Geovane Saraiva da Silva <geovane.saraiva.silva75@gmail.com>"]
+description = "A tiny markdown compiler based on Jesse's tutorials."
+homepage = "https://github.com/0LostConnection/"
 version = "0.1.0"
 edition = "2021"
 
