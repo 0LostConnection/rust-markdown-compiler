@@ -1,5 +1,3 @@
-use std::fmt::format;
-
 fn parse_markdown_file() {}
 
 fn get_title() -> String {
@@ -16,15 +14,25 @@ fn print_short_banner() {
 fn print_long_banner() {
     let owner = format!("Written by: {}", env!("CARGO_PKG_AUTHORS"));
     let homepage = format!("Homepage: {}", env!("CARGO_PKG_HOMEPAGE"));
-    let usage = format!("Usage: {} <somefile>.md",env!("CARGO_BIN_NAME"));
-    
+    let usage = format!("Usage: {} <somefile>.md", env!("CARGO_BIN_NAME"));
+
     print_short_banner();
     println!("{}\n{}\n{}", owner, homepage, usage)
 }
 
-fn usage() {}
+fn usage() {
+    print_long_banner()
+}
 
 fn main() {
-    print_long_banner();
-    usage();
+    let args: Vec<String> = std::env::args().collect();
+    
+    match args.len() {
+        1 => usage(),
+        2 => parse_markdown_file(),
+        _ => {
+            println!("[ ERROR ] Invalid invocation foo:penis!");
+        }
+    }
+    
 }

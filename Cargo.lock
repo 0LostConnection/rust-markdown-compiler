@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "rust-markdown-compiler"
+name = "tinymd"
 version = "0.1.0"

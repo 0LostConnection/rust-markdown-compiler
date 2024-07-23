@@ -1,5 +1,5 @@
 [package]
-name = "rust-markdown-compiler"
+name = "tinymd"
 authors = ["Geovane Saraiva da Silva <geovane.saraiva.silva75@gmail.com>"]
 description = "A tiny markdown compiler based on Jesse's tutorials."
 homepage = "https://github.com/0LostConnection/"
