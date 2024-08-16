@@ -1,3 +1,9 @@
+use std::{
+    fs::File,
+    io::{BufRead, BufReader, Read},
+    path::Path,
+};
+
 fn get_title() -> String {
     let name = env!("CARGO_PKG_NAME");
     let version = env!("CARGO_PKG_VERSION");
@@ -26,7 +32,22 @@ fn usage(_message: String) {
 
 fn parse_markdown_file(_filename: &str) {
     print_short_banner();
-    println!("[ INFO ] Trying to parse {}...", _filename);
+    println!("[ INFO ] Trying to parse {}...\n", _filename);
+
+    // Create a path variable from the filename
+    let input_filename = Path::new(_filename);
+
+    // Try to open the file
+    let file = File::open(&input_filename).expect("Couldn't open file");
+
+    let mut _ptag: bool = false; // keeps track of paragraphs tags
+    let mut _htag: bool = false; // keeps track of h1 tags
+
+    // Create a place to store all our tokens
+    let mut _tokens: Vec<String> = Vec::new();
+
+    // Read the file line-by-line
+    let reader = BufReader::new(file);
 }
 
 fn main() {
